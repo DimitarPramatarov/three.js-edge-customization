@@ -1,0 +1,673 @@
+body{
+    padding:25px;
+    font:14px "Lucida Grande",Helvetica,Arial,sans-serif;
+    height: 100%;
+}
+
+a{
+    color:#00B7FF
+}
+h1{
+    border-bottom:1px solid;
+    border-color: black;
+}
+
+.print-area {
+  float: left;
+  width: 18%;
+  height: 780px;
+}
+
+.dim {
+  margin-bottom: 15px;
+}
+
+#icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.dist {
+  border-radius: 4px;
+  border:1.5px solid;
+  border-color: rgb(36, 180, 247);
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  background-color: white;
+  width:100%; 
+}
+
+.process {
+  border-radius: 4px;
+  background-color: rgb(230, 241, 247);
+  border:1.5px solid;
+  border-color: rgb(36, 180, 247);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.tols-mode {
+  border-radius: 4px;
+  background-color: rgb(230, 241, 247);
+  border:1.5px solid;
+  border-color: rgb(36, 180, 247);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#tmode {
+  font-weight: bold;
+}
+
+/*
+#fileObject {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#fileObject + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+#fileObject:focus + label,
+#fileObject + label:hover {
+  background-color: red;
+} */
+
+.Bbox {
+  border-radius: 4px;
+  border:1.5px solid;
+  border-color: rgb(36, 180, 247);
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  background-color: white;
+  width:100%;
+
+}
+
+.line {
+  border-bottom:1px solid;
+  border-color: rgb(165, 167, 167);
+  margin-top: 20px;
+  width: 100%;
+}
+
+#renderer-results-container {
+  float: right;
+  width: 80%;
+  height: 85%;
+  background-color: rgb(230, 241, 247);
+  border-radius: 3px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);;
+}
+
+.features {
+  color:rgb(36, 180, 247);
+  border-bottom:1px solid;
+  border-color: rgb(165, 167, 167);
+  padding-bottom: 8px;
+}
+
+#accordion {
+  padding-top: 8px;
+}
+
+#btn-card {
+  color:rgb(36, 180, 247);
+}
+
+#dfm-btn-card {
+  color:rgb(36, 180, 247);
+}
+
+.renderer-container {
+  float: left;
+  width: 65%;
+  height: 95%;
+  margin: 15px;
+  padding-top: 2px;
+  padding-left: 2px;
+  border-radius: 3px;
+  border:1px solid;
+  border-color: rgb(36, 180, 247);
+  background-color: #e6e6e6;
+}
+
+#canvas-renderer {
+  height: 100%;
+  width: 100%;
+}
+
+.feature-container {
+  margin: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border:1.5px solid;
+  border-color: black;
+}
+
+.feature-name {
+  position: relative;
+  bottom: 24px;
+  background: white;
+  display: inline-block;
+  clear: both;
+  padding-left: 7px;
+  padding-right: 7px;
+  /*font-weight: bold;*/
+}
+
+.feature-style {
+  padding-left: 7px;
+  bottom: 10px;
+  position: relative;
+}
+
+.feature-style2 {
+  padding-left: 7px;
+  padding-bottom: 7px;
+  position: relative;
+  bottom: 6px;
+}
+
+#fs {
+  position: relative;
+  left: 10px;
+}
+
+.view-btn {
+  position: relative;
+  float: right;
+  right: 4px;
+  bottom: 26px;
+  border-radius: 6px;
+  border: 1.5px solid;
+  border-color: black;
+  background-color: white;
+}
+
+.view-tol-btn {
+  position: relative;
+  float: right;
+  border: none;
+  background-color: white;
+}
+
+.view-tol-btn:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+.remove-tol-btn {
+  position: relative;
+  float: right;
+  border: none;
+  background-color: white;
+}
+
+.remove-tol-btn:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+.view-btn:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+#export_scene {
+  border-radius: 4px;
+  border: 1.5px solid;
+  border-color: rgb(36, 180, 247);
+  background-color:rgb(230, 241, 247);
+}
+
+#export_scene:hover {
+  color:rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+#save_inputs {
+  border-radius: 4px;
+  border: 1.5px solid;
+  border-color: rgb(36, 180, 247);
+  background-color:rgb(230, 241, 247);
+}
+
+#save_inputs:hover {
+  color:rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+#pdf {
+  border-radius: 4px;
+  border: 1.5px solid;
+  border-color: rgb(36, 180, 247);
+  background-color:rgb(230, 241, 247);
+}
+
+#pdf:hover {
+  color:rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+#close-tols {
+  border: none;
+  background: none;
+  font-weight: bold;
+  visibility: hidden;
+}
+
+#close-tols:hover {
+  color:rgb(36, 180, 247);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.view-btn2 {
+  position: relative;
+  float: right;
+  font-size: 14px;
+  padding: 1px;
+  background-color: white;
+  border: none;
+}
+
+.view-btn2:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+#dfm {
+  margin-top: 20px;
+}
+
+.dfm-feedback {
+  padding: 5px;
+  border-radius: 6px;
+  border: 1.5px solid;
+  background-color: white;
+  border-color:  black;
+  color: black;
+} 
+
+.dfm-feedback:hover {
+  border-color:  rgb(36, 180, 247);
+  color: rgb(36, 180, 247);
+}
+
+#btn-modal {
+  background-color: white;
+  border-color: black;
+}
+
+#btn-modal:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+  border-color: rgb(36, 180, 247);
+}
+
+#yes-btn-modal {
+  background-color: white;
+  border-color: black;
+}
+
+#yes-btn-modal:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+  border-color: rgb(36, 180, 247);
+}
+
+#no-btn-modal {
+  background-color: white;
+  border-color: black;
+}
+
+#no-btn-modal:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+  border-color: rgb(36, 180, 247);
+}
+
+#close-modal-btn {
+  color: black;
+}
+
+#close-modal-btn:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+}
+
+.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+input[type="checkbox"]:checked ~ .reveal-if-active {
+  opacity: 1;
+  max-height: 100px; /* little bit of a magic number :( */
+  overflow: visible;
+}
+
+.hole-thread {
+  position: relative;
+  float: right;
+  right: 4px;
+  border-radius: 6px;
+  border: 1.5px solid;
+  border-color: black;
+  background-color: white;
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  padding-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 13px;
+  width: 220px;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%);
+    /*linear-gradient(to right, black, black);*/
+  background-position:
+    calc(100% - 15px) calc(1em - 2px),
+    calc(100% - 10px) calc(1em - 2px);
+    /*calc(100% - 30px) 0.2em;*/
+  background-size:
+    5px 5px,
+    5px 5px;
+    /*1px 1.5em;*/
+  background-repeat: no-repeat;
+}
+
+.hole-thread:hover {
+  color: rgb(36, 180, 247);
+  text-decoration: none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgb(36, 180, 247) 50%),
+    linear-gradient(135deg, rgb(36, 180, 247) 50%, transparent 50%);
+    /*linear-gradient(to right, rgb(36, 180, 247), rgb(36, 180, 247));*/
+  background-position:
+    calc(100% - 15px) calc(1em - 2px),
+    calc(100% - 10px) calc(1em - 2px);
+    /*calc(100% - 30px) 0.2em;*/
+  background-size:
+    5px 5px,
+    5px 5px;
+    /*1px 1.5em;*/
+  background-repeat: no-repeat;
+}
+
+.data-container {
+  float: left;
+  color:#000000;
+  width: 30%;
+  height: 95%;
+  overflow: scroll;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.feature_table tr td:first-child {
+    width: 100px;
+}
+
+/* The navigation bar */
+.navbar {
+  /*overflow: hidden;*/
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  bottom: 160;/* Position the navbar at the top of the page */
+  margin: auto;
+  width: 70%; /* Full width */
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /*opacity: 0.75;*/
+  }
+  
+/* Links inside the navbar */
+.navbar a {
+display: block;
+color: #f2f2f2;
+padding: 14px 16px;
+text-decoration: none;
+border: 2px solid transparent;
+/*font-size: 12px;*/
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+color: rgb(36, 180, 247);
+text-decoration: none;
+}
+
+/* Main content */
+.main {
+margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+#generated-pdf-files {
+  overflow: hidden;
+  word-break: break-all;
+  white-space: normal;
+}
+
+/*
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 16px;
+    border: 2px solid transparent;
+  }
+  
+.dropdown {
+position: relative;
+display: inline-block;
+}
+  
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #333;
+min-width: 100px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+bottom: 55;
+border-radius: 12px;
+color: black;
+text-decoration: none;
+}
+  
+.dropdown-content a {
+color: white;
+text-decoration: none;
+display: block;
+}
+  
+.dropdown-content a:hover {
+    color: rgb(36, 180, 247);
+    text-decoration: none;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {
+border-radius: 12px;
+color: rgb(36, 180, 247);
+text-decoration: none;
+border: 2px solid rgb(36, 180, 247);} */
+
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 16px;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    border-radius: 12px;
+    color: rgb(36, 180, 247);
+    text-decoration: none;
+    border: 2px solid rgb(36, 180, 247);
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    overflow: auto;
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    bottom: 75;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #333;}
+  
+  .show {display: block;}
+
+  .btn-group {
+    /*overflow: hidden;*/
+    top: 750; /* Position the navbar at the top of the page */
+    left: 37%;
+
+  }
+
+  @media screen and (max-width: 1585px) {
+
+    .data-container {
+      float: left;
+      color:#000000;
+      width: 28%;
+      height: 95%;
+      overflow: scroll;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+
+    .dropbtn {
+      font-size: 10pt;
+      padding: 13px;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+      border-radius: 10px;
+      color: rgb(36, 180, 247);
+      text-decoration: none;
+      border: 1.5px solid rgb(36, 180, 247);
+    }
+    
+    .navbar {
+      bottom: 140;
+      width: 80%;
+    }
+
+    .navbar a {
+      border: 1.5px solid transparent;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      overflow: auto;
+      display: none;
+      position: absolute;
+      background-color: #333;
+      min-width: 80px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      bottom: 65;
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    
+    .dropdown-content a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown a:hover {background-color: #333;}
+    
+    .show {display: block;}
+    
+
+  }
+
+  /*
+  @media screen and (max-width: 1365px) {
+    .dropbtn {
+      font-size: 8pt;
+      padding: 10px;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+      border-radius: 8px;
+      color: rgb(36, 180, 247);
+      text-decoration: none;
+      border: 1px solid rgb(36, 180, 247);
+    }
+
+    .navbar {
+      bottom: 120;
+      width: 80%;
+    }
+
+    .navbar a {
+      border: 1px solid transparent;
+      padding: 10px 12px;
+    }
+
+  } */
+
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<h1 style="color:rgb(36, 180, 247)">G-Serve</h1>
+
+<form ref='uploadForm'
+	  id='uploadForm'
+	  method='post'
+	  encType="multipart/form-data">
+<!--
+	<h3>Measurements</h3>
+	<input type="radio" id="unitsPick1" name="units" value="mm">
+	<label for="unitsPick1">MM</label>
+
+	<input type="radio" id="unitsPick2" name="units" value="cm" checked="checked">
+	<label for="unitsPick2">CM</label>
+
+	<input type="radio" id="unitsPick3" name="units" value="inch">
+	<label for="unitsPick3">Inches</label>
+
+	<h3>Material</h3>
+	<input type="radio" id="materialPick1" name="material" value="fdm" checked="checked">
+	<label for="materialPick1">FDM</label>
+
+	<input type="radio" id="materialPick2" name="material" value="sda" >
+	<label for="materialPick1">SDA</label>
+
+	<input type="radio" id="materialPick3" name="material" value="polyjet">
+	<label for="materialPick1">Polyjet</label>
+-->
+	<h3>Upload a STEP file</h3>
+	<input type="file" id="fileObject"  name="fileObject" accept=".STEP, .step, .stp"/>
+	<!--<label for="fileObject">Upload new part</label>-->
+</form>
+
+<div>
+	<h1 id="jobCost"></h1>
+</div>
+
+<div id="post-results-container">
+	<div class="print-area"> 
+		<div class="post-results-container">
+			<button id="save_inputs">Save Inputs</button>
+			<br />
+			<br />
+			<button id="pdf">Create PDF</button>
+			<br />
+			<br />
+		</div>
+		<div class="tols-mode post-results-container">Tolerance Mode 
+			<span id="tmode"></span> 
+			<br>
+			<button id="close-tols">Exit Tolerance Mode</button>
+		</div>
+		<br />
+		<div id="post-results-pdf" class="tols-mode post-results-container">
+			<p style="font-weight: bold;">Generated pdf files</p>
+			<div id="generated-pdf-files">
+			</div>
+		</div>
+	</div>
+   
+	<div id="renderer-results-container" class="post-results-container">
+		<div class="renderer-container">
+			<canvas id='canvas-renderer'></canvas>
+			<div class="navbar">
+				<div class="dropdown">
+					<button onclick="Mode()" class="dropbtn" id="mode-btn">Mode</button>
+					<div id="Mode" class="dropdown-content">
+						<a href="#Solid" id = "#Solid">Solid</a>
+						<a href="#Wireframe" id = "#Wireframe">Wireframe</a>
+						<a href="#Transparent" id = "#Transparent">Transparent</a> 
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn" id = "#Features">Features</button>
+				</div> 
+				<div class="dropdown">
+					<button class="dropbtn" id = "#BBox">Bounding Box</button>
+				</div> 
+				<div class="dropdown">
+					<button class="dropbtn" id = "#Tols">Tolerance</button>
+				</div> 
+			</div>
+		</div>
+		<div class="data-container">
+			<div class="data"></div>
+			<div class="line"></div>
+			<div class="dist">
+				Tolerances 
+				<br>
+				<span class= "distance-class" id="distance"> </span>
+			</div>
+			<div class="Bbox">
+				Bounding Box Dimensions <span id="bbox"></span> 
+			</div> 
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="Tol-Modal" tabindex="-1" role="dialog" aria-labelledby="Tol-ModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="Tol-ModalLabel">Speciality Tolerance</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal-btn">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<div class="dim">Dimension:  <span id="distance2"></span> </div>
+			
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+				  <span class="input-group-text" id="basic-addon1">+/-</span>
+				</div>
+				<input type="text" class="form-control" placeholder="Tolerance (mm)" aria-label="Tolerance" aria-describedby="basic-addon1" id="tolerance-value" autocomplete="off">
+			</div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-light" data-dismiss="modal" id="btn-modal">Save</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
+<div class="modal fade" id="Remove-Tol-Modal" tabindex="-1" role="dialog" aria-labelledby="Remove-Tol-ModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-body">
+			<div class="dim">Are you sure you want to remove this tolerance? 
+			 </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-light" data-dismiss="modal" id="yes-btn-modal">Yes</button>
+		  <button type="button" class="btn btn-light" data-dismiss="modal" id="no-btn-modal">No</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="index/uploadhandler.js"></script>
+<script type="text/javascript" src="index/three.js"></script>
+<script type="text/javascript" src="index/controls/OrthographicTrackballControls.js"></script>
+<script type="text/javascript" src="index/OBJExporter.js"></script>
+<script type="text/javascript" src="index/renderer.js"></script>
+<script type="text/javascript" src="index/WireframeGeometry.js"></script>
+<script src="//unpkg.com/three-spritetext"></script> <!--https://github.com/vasturiano/three-spritetext-->
+
+<script>
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function Mode() {
+		document.getElementById("Mode").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
+
+	document.getElementById("tmode").innerHTML = 'OFF';
+   
+</script>
